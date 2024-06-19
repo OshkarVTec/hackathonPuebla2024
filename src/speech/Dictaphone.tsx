@@ -49,7 +49,7 @@ function Dictaphone() {
 
 	return (
 		<>
-			<div>
+			<div className="flex flex-col h-screen">
 				<PageHeader />
 				<div className="flex gap-4 p-4 items-center bg-slate-100">
 					<img src={artImage} className="w-10" />
@@ -64,8 +64,8 @@ function Dictaphone() {
 				<div className="h-96 m-4 flex justify-center text-center">
 					{subtitles}
 				</div>
-				<div>
-					<div className="flex flex-col gap-4 justify-center items-center">
+				<div className="flex flex-col justify-end h-full">
+					<div className="flex flex-col gap-4 justify-center items-center my-10">
 						<button
 							onClick={handleStartStop}
 							className="border-2 p-2 bg-slate-200 rounded-md flex  justify-center items-center gap-2 "
