@@ -15,7 +15,7 @@ function Dictaphone() {
 	const subtitles = transcript.split(" ").slice(-10).join(" ");
 
 	if (!browserSupportsSpeechRecognition) {
-		return alert("no browsersupport");
+		return <div>No broser support</div>;
 	}
 
 	const handleSave = () => {
