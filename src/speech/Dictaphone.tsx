@@ -19,7 +19,7 @@ function Dictaphone() {
 	}
 
 	const handleSave = () => {
-		axios.post("http://localhost:5000/summary", {}).then((response) => {});
+		axios.post("http://localhost:5000/summary", {});
 	};
 
 	return (
