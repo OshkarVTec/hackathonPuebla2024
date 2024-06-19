@@ -33,6 +33,7 @@ function Dictaphone() {
 	}
 
 	const handleSave = () => {
+		stopListening();
 		axios.post("/summary", { text: transcript });
 		toast.success("Se guardó tu clase");
 		navigate("/");
