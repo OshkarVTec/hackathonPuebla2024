@@ -3,11 +3,20 @@ import SpeechRecognition, {
 	useSpeechRecognition,
 } from "react-speech-recognition";
 import axios from "axios";
+import { useState } from "react";
+import PageHeader from "../components/PageHeader";
 
 function Dictaphone() {
-	const startListening = () =>
+	const [isListening, setIsListening] = useState(false);
+
+	const startListening = () => {
+		setIsListening(true);
 		SpeechRecognition.startListening({ continuous: true, language: "es-ES" });
-	const stopListening = () => SpeechRecognition.stopListening();
+	};
+	const stopListening = () => {
+		setIsListening(false);
+		SpeechRecognition.stopListening();
+	};
 
 	const { transcript, browserSupportsSpeechRecognition } =
 		useSpeechRecognition();
@@ -19,22 +28,33 @@ function Dictaphone() {
 	}
 
 	const handleSave = () => {
-		axios.post("http://localhost:5000/summary", {});
+		axios.post("/summary", { text: transcript });
+	};
+
+	const handleStartStop = () => {
+		if (isListening) {
+			stopListening();
+		} else {
+			startListening();
+		}
 	};
 
 	return (
 		<>
 			<div>
+				<PageHeader />
 				<h1>Speech to Text Converter</h1>
-				<p>
-					Note: To copy written text, firstly click once on the white board
-					after clicking Stop button.
-				</p>
 				<div>{subtitles}</div>
-				<div>{transcript}</div>
 				<div>
-					<button onClick={startListening}>Start</button>
-					<button onClick={stopListening}>Stop</button>
+					<button onClick={handleStartStop}>
+						{isListening ? "Parar de escuchar..." : "Empezar a grabar..."}
+					</button>
+					<button
+						onClick={handleSave}
+						disabled={isListening || transcript.length == 0}
+					>
+						Guardar
+					</button>
 				</div>
 			</div>
 		</>
