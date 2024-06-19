@@ -88,14 +88,16 @@ function Dictaphone() {
 						</button>
 						<button
 							onClick={handleSave}
-							disabled={isListening || transcript.length == 0}
+							disabled={transcript.length == 0}
 							className={`border-2 p-2 bg-slate-200 rounded-md flex  justify-center items-center gap-2 ${
-								isListening || transcript.length == 0
-									? "bg-gray-400 cursor-not-allowed"
-									: ""
+								transcript.length == 0 ? "bg-slate-300 cursor-not-allowed" : ""
 							}`}
 						>
-							<FaStop style={{ color: "red" }} />
+							<FaStop
+								style={{
+									color: transcript.length == 0 ? "grey" : "red",
+								}}
+							/>
 							<p>Terminar clase</p>{" "}
 						</button>
 					</div>
