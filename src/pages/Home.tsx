@@ -3,10 +3,12 @@ import homeImg from "../assets/homeImg.png";
 import notesImg from "../assets/notesImg.png";
 import recordImg from "../assets/recordImg.png";
 import learningImg from "../assets/learningImg.png";
+import bienvenida from "../assets/bienvenida.png";
 
 export default function Home() {
 	return (
 		<div className="bg-[#6D57FC] h-screen flex flex-col ">
+			<img src={bienvenida} className="w-60 p-4 pb-0" />
 			<img src={homeImg} className="grow-0" />
 			<div className="bg-white rounded-t-3xl h-full flex flex-col">
 				<p className="text-3xl p-4 ">

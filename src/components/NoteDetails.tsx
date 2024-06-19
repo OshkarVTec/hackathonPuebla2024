@@ -33,6 +33,7 @@ export default function NoteDetails() {
 			</div>
 			<div className="flex gap-4 p-4 items-center">
 				<img src={noteIcon} className="w-10" />
+				<img src={noteIcon} className="w-10" />
 			</div>
 			<div
 				className="flex flex-col gap-2 p-4 
