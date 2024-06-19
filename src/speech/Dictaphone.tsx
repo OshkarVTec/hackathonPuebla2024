@@ -54,8 +54,10 @@ function Dictaphone() {
 					<img src={artImage} className="w-10" />
 					{isListening ? (
 						<p>Estoy escuchando...</p>
-					) : (
+					) : transcript.length == 0 ? (
 						<p>Listo para escuchar...</p>
+					) : (
+						<p>Escucha pausada</p>
 					)}
 				</div>
 				<div className="h-96 m-4 flex justify-center text-center">
