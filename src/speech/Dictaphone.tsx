@@ -5,8 +5,13 @@ import SpeechRecognition, {
 import axios from "axios";
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
+import artImage from "../assets/artImage.png";
+import { FaPlay, FaStop } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Dictaphone() {
+	const navigate = useNavigate();
 	const [isListening, setIsListening] = useState(false);
 
 	const startListening = () => {
@@ -29,6 +34,8 @@ function Dictaphone() {
 
 	const handleSave = () => {
 		axios.post("/summary", { text: transcript });
+		toast.success("Se guardó tu clase");
+		navigate("/");
 	};
 
 	const handleStartStop = () => {
@@ -43,18 +50,48 @@ function Dictaphone() {
 		<>
 			<div>
 				<PageHeader />
-				<h1>Speech to Text Converter</h1>
-				<div>{subtitles}</div>
+				<div className="flex gap-4 p-4 items-center">
+					<img src={artImage} className="w-10" />
+					{isListening ? (
+						<p>Estoy escuchando...</p>
+					) : (
+						<p>Listo para escuchar...</p>
+					)}
+				</div>
+				<div className="h-96 m-4 flex justify-center text-center">
+					{subtitles}
+				</div>
 				<div>
-					<button onClick={handleStartStop}>
-						{isListening ? "Parar de escuchar..." : "Empezar a grabar..."}
-					</button>
-					<button
-						onClick={handleSave}
-						disabled={isListening || transcript.length == 0}
-					>
-						Guardar
-					</button>
+					<div className="flex flex-col gap-4 justify-center items-center">
+						<button
+							onClick={handleStartStop}
+							className="border-2 p-2 bg-slate-200 rounded-md flex  justify-center items-center gap-2 "
+						>
+							{isListening ? (
+								<>
+									<FaStop style={{ color: "#4664EA" }} />
+									<p>Parar de escuchar...</p>
+								</>
+							) : (
+								<>
+									<FaPlay style={{ color: "green" }} />
+									<p>Empezar a grabar...</p>
+								</>
+							)}
+						</button>
+						<button
+							onClick={handleSave}
+							disabled={isListening || transcript.length == 0}
+							className={`border-2 p-2 bg-slate-200 rounded-md flex  justify-center items-center gap-2 ${
+								isListening || transcript.length == 0
+									? "bg-gray-400 cursor-not-allowed"
+									: ""
+							}`}
+						>
+							<FaStop style={{ color: "red" }} />
+							<p>Terminar clase</p>{" "}
+						</button>
+					</div>
 				</div>
 			</div>
 		</>
