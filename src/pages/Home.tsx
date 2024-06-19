@@ -25,7 +25,7 @@ export default function Home() {
 					</Link>
 					<Link to="/dictado" className="flex items-center p-4 gap-4">
 						<img src={recordImg} />
-						<p className="text-3xl">Herramientas</p>
+						<p className="text-3xl">Tomar clase</p>
 					</Link>
 				</div>
 			</div>
