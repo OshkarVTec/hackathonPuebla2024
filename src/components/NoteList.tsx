@@ -59,15 +59,17 @@ export default function NoteList() {
 				<div key={materia} className="flex flex-col">
 					<h2 className="text-xl px-4">{materia}</h2>
 					<hr className={"border-2 mx-4 border-" + colors[index]} />
-					{groupedNotes[materia].map((note: Note) => (
-						<div
-							key={note.id}
-							className={"p-4 mx-4 rounded-xl my-4 bg-" + colors[index]}
-							onClick={() => navigate(`/notas/${note.id}`)}
-						>
-							<h3 className="font-bold">{note.titulo}</h3>
-						</div>
-					))}
+					<div className="m-4">
+						{groupedNotes[materia].map((note: Note) => (
+							<div
+								key={note.id}
+								className={"p-4 rounded-xl my-2 bg-" + colors[index]}
+								onClick={() => navigate(`/notas/${note.id}`)}
+							>
+								<h3 className="font-bold">{note.titulo}</h3>
+							</div>
+						))}
+					</div>
 				</div>
 			))}
 		</div>
