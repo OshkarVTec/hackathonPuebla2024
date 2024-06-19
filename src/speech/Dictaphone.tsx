@@ -6,7 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
 import artImage from "../assets/artImage.png";
-import { FaPlay, FaStop } from "react-icons/fa";
+import { FaPlay, FaStop, FaPause } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -69,13 +69,18 @@ function Dictaphone() {
 						>
 							{isListening ? (
 								<>
-									<FaStop style={{ color: "#4664EA" }} />
+									<FaPause style={{ color: "black" }} />
 									<p>Parar de escuchar...</p>
+								</>
+							) : transcript.length == 0 ? (
+								<>
+									<FaPlay style={{ color: "green" }} />
+									<p>Empezar a grabar...</p>
 								</>
 							) : (
 								<>
 									<FaPlay style={{ color: "green" }} />
-									<p>Empezar a grabar...</p>
+									<p>Reanudar</p>
 								</>
 							)}
 						</button>
