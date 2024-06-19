@@ -3,6 +3,8 @@ import artImage from "../assets/artImage.png";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import defaultImg from "../assets/defaultImg.webp";
+import noteIcon from "../assets/noteIcon.png";
 
 export default function NoteDetails() {
 	const { id } = useParams<{ id: string }>();
@@ -30,7 +32,7 @@ export default function NoteDetails() {
 				<p>Estas son las notas de la clase</p>
 			</div>
 			<div className="flex gap-4 p-4 items-center">
-				<img src={artImage} className="w-10" />
+				<img src={noteIcon} className="w-10" />
 			</div>
 			<div
 				className="flex flex-col gap-2 p-4 
@@ -41,6 +43,9 @@ export default function NoteDetails() {
 			</div>
 			<div className="flex gap-4 p-4 items-center">
 				<p>{note?.texto}</p>
+			</div>
+			<div className="flex justify-center">
+				<img src={defaultImg} className="w-full" />
 			</div>
 		</div>
 	);
