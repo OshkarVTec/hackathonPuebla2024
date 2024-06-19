@@ -4,6 +4,7 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import NoteList from "./components/NoteList";
 import Home from "./pages/Home";
+import NoteDetails from "./components/NoteDetails";
 
 /**
  * General routing
@@ -25,6 +26,10 @@ const router = createHashRouter([
 			{
 				path: "notas",
 				element: <NoteList />,
+			},
+			{
+				path: "notas/:id",
+				element: <NoteDetails />,
 			},
 		],
 	},

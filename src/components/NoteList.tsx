@@ -14,7 +14,7 @@ export default function NoteList() {
 	return (
 		<div>
 			{notes.map((note) => (
-				<div key={note.id}>{note.content}</div>
+				<div key={note.id}>{note.titulo}</div>
 			))}
 		</div>
 	);
@@ -22,5 +22,8 @@ export default function NoteList() {
 
 interface Note {
 	id: number;
-	content: string;
+	titulo: string;
+	materia: string;
+	texto: string;
+	fecha: string;
 }

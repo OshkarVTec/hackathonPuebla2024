@@ -50,7 +50,7 @@ function Dictaphone() {
 		<>
 			<div>
 				<PageHeader />
-				<div className="flex gap-4 p-4 items-center">
+				<div className="flex gap-4 p-4 items-center bg-slate-100">
 					<img src={artImage} className="w-10" />
 					{isListening ? (
 						<p>Estoy escuchando...</p>
